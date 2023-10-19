@@ -1,17 +1,27 @@
-#include "shell.h"
+#include "main.h"
 
 /**
-* main - entry point
-* Return: int
-*/
-int main(void)
+ * main - initialize the variables of the program
+ * @argc: number of values received from the command line
+ * @argv: values received from the command line
+ * @env: number of values received from the command line
+ * Return: zero on succes.
+ */
+int main(int argc, char *argv[], char *env[])
 {
+	data_of_program data_struct = {NULL}, *data = &data_struct;
+	char *prompt = "";
 
-if (isatty(STDIN_FILENO) == 0)
-{
-prompt(3);
-}
+	inicialize_data(data, argc, argv, env);
 
-prompt(2);
-return (0);
+	signal(SIGINT, handle_ctrl_c);
+
+	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
+	{/* We are in the terminal, interactive mode */
+		errno = 2;/*???????*/
+		prompt = PROMPT_MSG;
+	}
+	errno = 0;
+	sisifo(prompt, data);
+	return (0);
 }
