@@ -25,7 +25,7 @@ void find(char **argv, char *copy, int state)
     }
 
     while (environ[a])
-    a++;
+        a++;
     env_cpy = malloc(sizeof(char *) * a);
     for (a = 0; environ[a]; a++)
         env_cpy[a] = strdup(environ[a]);
@@ -42,14 +42,14 @@ void find(char **argv, char *copy, int state)
     token = strtok(token, ":");
     while (token)
     {
-    path = malloc(sizeof(char) * (strlen(token) + strlen(copy) + 1));
-    strcat(path, token), strcat(path, "/"), strcat(path, copy);
-    if (stat(path, &st) == 0)
-    {
-        argv[0] = strdup(path);
-        exec(argv, copy, state);
-    }
-    token = strtok(NULL, ":");
+        path = malloc(sizeof(char) * (strlen(token) + strlen(copy) + 1));
+        strcat(path, token), strcat(path, "/"), strcat(path, copy);
+        if (stat(path, &st) == 0)
+        {
+            argv[0] = strdup(path);
+            exec(argv, copy, state);
+        }
+        token = strtok(NULL, ":");
     }
     char *g = _strcat(argv[0], msg);
     write(1, g, _strlen(g));
