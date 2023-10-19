@@ -21,5 +21,6 @@ void tokenizer(char *buffer, int state);
 void find(char **argv, const char *copy, int state);
 void exec(char **argv, const char *copy, int state);
 void free_all(char *copy, char **env_cpy, char *path);
+void hashtag_handle(char *buff);
 
 #endif
