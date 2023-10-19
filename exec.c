@@ -1,5 +1,4 @@
 #include "shell.h"
-#include <stdio.h>
 
 /**
 * exec - funcyion to execute commands
@@ -23,7 +22,7 @@ void exec(char **argv, char *copy, int state)
     if (child_pid == 0)
     {
         if (execve(argv[0], argv, environ) == -1)
-        perror("");
+            perror("");
     }
     else
     {

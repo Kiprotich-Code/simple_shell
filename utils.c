@@ -8,14 +8,14 @@
 */
 char *_strcpy(char *dest, const char *src)
 {
-int i = 0;
-while (src[i] != '\0')
-{
-dest[i] = src[i];
-i++;
-}
-dest[i] = '\0';
-return (dest);
+    int i = 0;
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return (dest);
 }
 
 /**
@@ -25,12 +25,12 @@ return (dest);
 */
 int _strlen(const char *s)
 {
-int length = 0;
-while (s[length] != '\0')
-{
-length++;
-}
-return (length);
+    int length = 0;
+    while (s[length] != '\0')
+    {
+        length++;
+    }
+    return (length);
 }
 
 /**
@@ -40,23 +40,23 @@ return (length);
 */
 int _atoi(const char *s)
 {
-int i = 0;
-int sign = 1;
-int result = 0;
+    int i = 0;
+    int sign = 1;
+    int result = 0;
 
-if (s[0] == '-')
-{
-sign = -1;
-i = 1;
-}
+    if (s[0] == '-')
+    {
+        sign = -1;
+        i = 1;
+    }
 
-while (s[i] >= '0' && s[i] <= '9')
-{
-result = result * 10 + (s[i] - '0');
-i++;
-}
+    while (s[i] >= '0' && s[i] <= '9')
+    {
+        result = result * 10 + (s[i] - '0');
+        i++;
+    }
 
-return (sign *result);
+    return (sign *result);
 }
 
 /**
@@ -67,15 +67,15 @@ return (sign *result);
 */
 char *_strcat(char *dest, const char *src)
 {
-char *ret = dest;
-while (*dest)
-{
-dest++;
-}
-while (*src)
-{
-*dest++ = *src++;
-}
-*dest = '\0';
-return (ret);
+    char *ret = dest;
+    while (*dest)
+    {
+        dest++;
+    }
+    while (*src)
+    {
+        *dest++ = *src++;
+    }
+    *dest = '\0';
+    return (ret);
 }
