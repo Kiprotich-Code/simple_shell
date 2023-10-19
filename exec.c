@@ -1,14 +1,23 @@
 #include "shell.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+/* Declare the prompt function */
+void prompt(int state);
+
+extern char **environ;  /* Declare environ */
 
 /**
-* exec - funcyion to execute commands
+* exec - function to execute commands
 * @argv: list of tokens
 * @copy: copy of buffer
-* @state: to know if its interactive or non interacive
+* @state: to know if it's interactive or non-interactive
 * Return: void
 */
-void exec(char **argv, char *copy, int state)
+void exec(char **argv, const char *copy, int state)
 {
 pid_t child_pid;
 int status;
@@ -22,15 +31,16 @@ exit(EXIT_FAILURE);
 if (child_pid == 0)
 {
 if (execve(argv[0], argv, environ) == -1)
-perror("");
+perror("execve");
 }
 else
 {
-wait(NULL);
-free(copy);
+wait(&status);
+free((char *)copy);
 free(argv);
 if (state == 2)
 exit(1);
+/* Assuming that prompt is declared and defined in another part of your code */
 prompt(1);
 }
 }

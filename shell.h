@@ -9,7 +9,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-/* Function prototypes */
 char *_strcpy(char *dest, const char *src);
 int _strlen(const char *s);
 int _atoi(const char *s);
